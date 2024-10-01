@@ -12,7 +12,7 @@ interface Recept {
   instructies: string;
 }
 
-const initialReceptenLijst: Recept[] = [
+const ReceptenLijst: Recept[] = [
   {
     id: 1,
     naam: "Pannenkoeken",
@@ -71,7 +71,7 @@ const initialReceptenLijst: Recept[] = [
 ];
 
 export default function Recepten() {
-  const [recepten, setRecepten] = useState<Recept[]>(initialReceptenLijst);
+  const [recepten, setRecepten] = useState<Recept[]>(ReceptenLijst);
   const [newRecept, setNewRecept] = useState<Recept>({
     id: recepten.length + 1,
     naam: "",
@@ -162,6 +162,7 @@ export default function Recepten() {
           />
           <button onClick={handleAddRecept}>Recept Toevoegen</button>
         </div>
+        
       </main>
     </div>
   );
