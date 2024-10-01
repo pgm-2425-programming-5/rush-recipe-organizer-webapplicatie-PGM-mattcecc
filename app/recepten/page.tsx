@@ -82,7 +82,12 @@ export default function Recepten() {
   const [newIngredient, setNewIngredient] = useState<string>("");
 
   const handleAddRecept = () => {
-    if (newRecept.naam && newRecept.categorie && newRecept.ingredienten.length > 0 && newRecept.instructies) {
+    if (
+      newRecept.naam &&
+      newRecept.categorie &&
+      newRecept.ingredienten.length > 0 &&
+      newRecept.instructies
+    ) {
       setRecepten([...recepten, newRecept]);
       setNewRecept({
         id: recepten.length + 1,
@@ -105,6 +110,10 @@ export default function Recepten() {
     }
   };
 
+  const handleDeleteRecept = (id: number) => {
+    setRecepten(recepten.filter(recept => recept.id !== id));
+  };
+
   return (
     <div>
       <Navbar />
@@ -125,6 +134,7 @@ export default function Recepten() {
               </ul>
               <h3>Bereidingsinstructies</h3>
               <p>{recept.instructies}</p>
+              <button onClick={() => handleDeleteRecept(recept.id)}>Verwijder Recept</button>
             </div>
           ))}
         </div>
@@ -162,7 +172,6 @@ export default function Recepten() {
           />
           <button onClick={handleAddRecept}>Recept Toevoegen</button>
         </div>
-        
       </main>
     </div>
   );
